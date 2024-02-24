@@ -1,8 +1,13 @@
 <div class="row mr-0 ml-0">
-
-  <div class="col-sm-2">
+  <div class="d-flex justify-content-end hided-menu" *ngIf="!blnShowMenu">
+    <img class="hide-menu" src="/assets/images/arrow-toggle.svg" alt="" (click)="showHideMenu()">
+  </div>
+  <div class="col-sm-2" *ngIf="blnShowMenu">
     <nav class="navbar  d-block row ">
       <div style="position: sticky;top: 0;">
+        <div class="d-flex justify-content-end">
+          <img src="/assets/images/arrow-toggle.svg" alt="" (click)="showHideMenu()">
+        </div>
 
         <h2>heylink.</h2>
   
@@ -15,11 +20,11 @@
     
     </nav>
   </div>
-  <div class="col-sm-10 inner-content">
+  <div [ngClass]="blnShowMenu ? 'col-sm-10' : 'col-sm-12'" class=" inner-content">
 
     <router-outlet>
      
-      
+
       <app-dashboard  *ngIf="blnShowOverView"></app-dashboard>
     
     </router-outlet>

@@ -1,0 +1,122 @@
+
+<div class="top-nav">
+    <div class="d-flex justify-content-between">
+        <div class="font-weight-bold">
+            Overview
+        </div>
+        <div>
+            <select class="form-select drop-down" aria-label="Default select example">
+                <option selected value="1">This month</option>
+                <option value="2">Last month</option>
+              </select>
+        </div>
+    </div>
+</div>
+  
+<div class="card m-4 ">
+    <div class="col-sm-12 d-flex mt-4 mb-4">
+        <ng-container *ngFor="let item of arrCards">
+            <div  [ngClass]="item.strName == 'Pageviews' ? 'col-sm-2' : 'col-sm-2'">
+                <div class="main-name">
+                    {{item.strName}}
+
+                </div>
+                <div class="value-class">
+                    {{item.intValue}}
+                </div>
+                <div>
+                <span *ngIf="item.blnUp;else blnDown">
+                <img src="/assets/images/green-arrow.svg" width="10px" alt="">
+                </span>
+                <ng-template #blnDown>
+                <img src="/assets/images/red-arrow.svg" width="10px" alt="">
+                </ng-template>
+
+                <span class="ml-2 font-class" [ngStyle]="{'color': item.blnUp ? 'green':'red'}">
+                    {{item.strPercentage}}
+                </span>
+                <span class="sub-class">
+                    {{item.blnEpc?'Epc':'Ctr'}} :
+                </span>
+                <span class="sub-class">
+                    {{item.strEpcValue}}
+                </span>
+                </div>
+            </div>
+            <div *ngIf="item.strName == 'Pageviews'" class="col-sm-4" id="chart">
+                <app-chart [type]="'line'" [sparkline]="true"></app-chart>
+
+            </div>
+        </ng-container>
+    </div>
+</div>
+
+<div class="col-sm-12 row card-grow-class">
+    <div class="col-sm-8 card d-flex">
+
+        <div class="absolute-class">
+            Performance
+        </div>
+        
+
+        <div class="">
+            <!-- <div class="title">Title</div> -->
+            <div class="content" style=" flex-grow: 1;">
+              <mat-tab-group class="tabs" mat-align-tabs="end">
+                    <mat-tab label="Page views"> 
+                    <!-- <app-chart [type]="'line'" [sparkline]="false"></app-chart> -->
+
+                    </mat-tab>
+             
+                <!-- Your mat-tab elements go here -->
+              </mat-tab-group>
+            </div>
+          </div>
+        <!-- <div class="d-flex justify-content-end">
+
+            <mat-tab-group>
+                <mat-tab label="Page views"> <p>Content 1</p> </mat-tab>
+                <mat-tab label="Clicks"> Content 2 </mat-tab>
+                <mat-tab label="Conversations"> Content 3 </mat-tab>
+                <mat-tab label="Comissions"> Content 3 </mat-tab>
+
+              </mat-tab-group>
+        </div> -->
+    </div>
+    <div class="flex-grow-1 card">
+        <div class="m-2">
+
+            <h5>
+               Networks
+            </h5>
+            <div>
+                <p-table [value]="arrService">
+                    <ng-template pTemplate="header">
+                        <tr class="tr-class">
+                            <th class="th-class" *ngFor="let col of cols">
+                                {{col.header}}
+                            </th>
+                        </tr>
+                    </ng-template>
+                    <ng-template pTemplate="body" let-service>
+                        <tr class="tr-value">
+                            <td class="td-class" [ngStyle]="{'color': service.strValueStatus ==='CONNECT' ? 'gray':
+                            ( col.field==='strValue' && service.strValueStatus ==='UP'?'green':
+                            (col.field==='strValue' && service.strValueStatus ==='DOWN'?'red':null))}" 
+                            *ngFor="let col of cols">
+                                     {{service[col.field]}}
+                                 <span *ngIf="service.strValueStatus ==='CONNECT' && col.field==='strValue'">
+                                   <button class="btn btn-light" >
+                                    Connect
+                                   </button>
+                                </span>
+                            </td>
+                        </tr>
+                    </ng-template>
+                </p-table>
+            </div>
+        </div>
+    </div>
+
+</div>
+

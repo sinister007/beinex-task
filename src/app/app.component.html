@@ -1,0 +1,26 @@
+<div class="row mr-0 ml-0">
+
+  <div class="col-sm-2">
+    <nav class="navbar  d-block row ">
+      <div style="position: sticky;top: 0;">
+
+        <h2>heylink.</h2>
+  
+        <div>
+          <div class="menu-item" (click)="showOverview()" >
+            Overview
+          </div>
+        </div>
+      </div>
+    
+    </nav>
+  </div>
+  <div class="col-sm-10 inner-content">
+
+    <router-outlet>
+      <!-- *ngIf="blnShowOverView" -->
+      <app-dashboard ></app-dashboard>
+    
+    </router-outlet>
+  </div>
+</div>

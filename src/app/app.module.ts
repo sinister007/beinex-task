@@ -9,14 +9,12 @@ import {MatTabsModule} from '@angular/material/tabs';
 import { MaterialModule } from './material.module';
 import { MatNativeDateModule } from '@angular/material/core';
 import {TableModule} from 'primeng/table';
-import { ChartComponent } from './chart/chart.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 @NgModule({
   declarations: [
     AppComponent,
     DashboardComponent,
-    ChartComponent
   ],
   imports: [
     BrowserModule,

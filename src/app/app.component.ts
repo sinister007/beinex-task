@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Router } from '@angular/router';
 
 
 
@@ -8,6 +9,12 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
+
+  constructor(
+    private objRouter:Router
+  ){
+
+  }
   title = 'angular-task';
   showFiller = false;
   /**
@@ -20,6 +27,8 @@ export class AppComponent {
    * show over view menu
    */
   showOverview(){
+    debugger
     this.blnShowOverView = true
+    this.objRouter.navigate(['/dashboard'])
   }
 }

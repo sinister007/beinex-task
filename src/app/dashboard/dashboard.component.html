@@ -44,7 +44,9 @@
                 </div>
             </div>
             <div *ngIf="item.strName == 'Pageviews'" class="col-sm-4" id="chart">
-                <app-chart [type]="'line'" [sparkline]="true"></app-chart>
+                <div id="chart0">
+                    <apx-chart [series]="chart0Series" [chart]="chart0Options.chart"></apx-chart>
+                  </div>
 
             </div>
         </ng-container>
@@ -62,13 +64,28 @@
         <div class="">
             <!-- <div class="title">Title</div> -->
             <div class="content" style=" flex-grow: 1;">
-              <mat-tab-group class="tabs" mat-align-tabs="end">
+              <mat-tab-group class="tabs" mat-align-tabs="end" (selectedTabChange)="onTabChange($event)">
                     <mat-tab label="Page views"> 
-                    <!-- <app-chart [type]="'line'" [sparkline]="false"></app-chart> -->
-
+                        <div id="chart1" *ngIf="intTabIndex ===0">
+                            <apx-chart [series]="chart1Series" [chart]="chart1Options.chart"></apx-chart>
+                          </div>
+                    </mat-tab>
+                    <mat-tab label="Clicks"> 
+                        <div id="chart2" *ngIf="intTabIndex ===1">
+                            <apx-chart [series]="chart2Series" [chart]="chart2Options.chart"></apx-chart>
+                          </div>
+                    </mat-tab>
+                    <mat-tab label="Conversations">
+                        <div id="chart3" *ngIf="intTabIndex ===2">
+                            <apx-chart [series]="chart3Series" [chart]="chart3Options.chart"></apx-chart>
+                          </div>
+                    </mat-tab>
+                    <mat-tab label="Comissions">
+                        <div id="chart4" *ngIf="intTabIndex ===3">
+                            <apx-chart [series]="chart4Series" [chart]="chart4Options.chart"></apx-chart>
+                          </div>    
                     </mat-tab>
              
-                <!-- Your mat-tab elements go here -->
               </mat-tab-group>
             </div>
           </div>

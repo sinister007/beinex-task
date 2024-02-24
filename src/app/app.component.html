@@ -18,8 +18,9 @@
   <div class="col-sm-10 inner-content">
 
     <router-outlet>
-      <!-- *ngIf="blnShowOverView" -->
-      <app-dashboard ></app-dashboard>
+     
+      
+      <app-dashboard  *ngIf="blnShowOverView"></app-dashboard>
     
     </router-outlet>
   </div>

@@ -14,9 +14,9 @@ export class DashboardComponent implements OnInit {
    */
   arrCards = [
     {strName:"Pageviews",intValue:"540.280",strPercentage:"2,15%",blnEpc:true,strEpcValue:"308.20 USD",blnUp:true},
-    {strName:"Clicks",intValue:1010,strPercentage:"1,10%",blnEpc:false,strEpcValue:"24.5%"},
-    {strName:"Conversations",intValue:1010,strPercentage:"2,15%",blnEpc:false,strEpcValue:"28.6%",blnUp:true},
-    {strName:"Comission",intValue:1010,strPercentage:"0,24%",blnEpc:true,strEpcValue:"14 USD",blnUp:true},
+    {strName:"Clicks",intValue:"70.210",strPercentage:"1,10%",blnEpc:false,strEpcValue:"24.5%"},
+    {strName:"Conversations",intValue:"42.340",strPercentage:"2,15%",blnEpc:false,strEpcValue:"28.6%",blnUp:true},
+    {strName:"Comission",intValue:"24.136",strPercentage:"0,24%",blnEpc:true,strEpcValue:"14 USD",blnUp:true},
 
   ]
 
@@ -24,18 +24,17 @@ export class DashboardComponent implements OnInit {
    * array of services
    */
   arrService = [
-    {"strType":"Adservice","strClicks":450,"strValue":"2,50%","strValueStatus":"UP"},
-    {"strType":"Adrecord","strClicks":380,"strValue":"2,35%","strValueStatus":"UP"},
-    {"strType":"MasOffer","strClicks":920,"strValue":"1,20%","strValueStatus":"DOWN"},
-    {"strType":"WealthFront","strClicks":930,"strValue":"","strValueStatus":"CONNECT"},
-    {"strType":"Grovia","strClicks":465,"strValue":"","strValueStatus":"CONNECT"},
+    {"strType":"Adservice","strClicks":450,"strValue":"2,50%","strValueStatus":"UP","iconColor":"blue"},
+    {"strType":"Adrecord","strClicks":380,"strValue":"2,35%","strValueStatus":"UP","iconColor":"green"},
+    {"strType":"MasOffer","strClicks":920,"strValue":"1,20%","strValueStatus":"DOWN","iconColor":"blue"},
+    {"strType":"WealthFront","strClicks":930,"strValue":"","strValueStatus":"CONNECT","iconColor":"violet"},
+    {"strType":"Grovia","strClicks":465,"strValue":"","strValueStatus":"CONNECT","iconColor":"orange"},
 
   ]
   /**
    * tab index to know and render the charts 
    */
   intTabIndex:number = 0
-
   /**
    * chart 0 options and series
    */
@@ -50,7 +49,7 @@ export class DashboardComponent implements OnInit {
       }
     },
     stroke: {
-      width: '2px',
+      width: 2,
       curve: 'straight',
     }
   };
@@ -74,7 +73,7 @@ export class DashboardComponent implements OnInit {
   chart1Series = [
     {
       name: "Series 1",
-      data: [30, 40, 35, 50, 49, 60, 70, 91, 125]
+      data: [30, 40, 35, 50, 49, 60, 70, 91, 125],
     }
   ];
 
@@ -93,7 +92,9 @@ export class DashboardComponent implements OnInit {
   chart2Series = [
     {
       name: "Series 2",
-      data: [11, 32, 45, 32, 34, 52, 41, 55, 67]
+      data: [11, 32, 45, 32, 34, 52, 41, 55, 67],
+      color:"#04ff00"
+
     }
   ];
    /**
@@ -110,7 +111,8 @@ export class DashboardComponent implements OnInit {
   chart3Series = [
     {
       name: "Series 3",
-      data: [20, 50, 120, 40, 70, 10, 80, 45, 20]
+      data: [20, 50, 120, 40, 70, 10, 80, 45, 20],
+      color:"#ff00fc"
     }
   ];
    /**
@@ -120,15 +122,17 @@ export class DashboardComponent implements OnInit {
     chart:<any> {
       type: "area",
       height: 350,
-      toolbar:false
-
+      toolbar:false,
+      
     },
+    
   };
 
   chart4Series = [
     {
       name: "Series 4",
-      data: [22, 54, 80, 10, 50, 20, 60, 7, 42]
+      data: [22, 54, 80, 10, 50, 20, 60, 7, 42],
+      color:'#ff5959'
     }
   ];
   /**
@@ -148,7 +152,10 @@ export class DashboardComponent implements OnInit {
 
    
   }
-    
+  /**
+   * 
+   * @param event on tab change event to get the index of the tab
+   */
   onTabChange(event: any): void {
     this.intTabIndex = event.index
   }

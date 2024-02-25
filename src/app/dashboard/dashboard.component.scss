@@ -1,9 +1,10 @@
 .top-nav{
     padding: 1rem;
+    box-shadow: 15px 0px 15px 0px gray;
     background: white;
     position: sticky;
     top: 0;
-    z-index: 1;
+    z-index: 2;
 }
 
 .drop-down{
@@ -44,8 +45,10 @@
 }
 
 .absolute-class{
+    font-weight: 500;
+
     position: absolute;
-    top: 0.5rem ;
+    top: 0.7rem ;
 }
 
 .tr-class{
@@ -57,7 +60,7 @@
 
 
 .th-class{
-    padding: 0.5rem;
+    padding: 0.7rem;
     font-weight: 500;
     color: gray;
     font-size: 13px;
@@ -68,7 +71,7 @@
 }
 
 .td-class{
-    padding: 0.5rem;
+    padding: 1rem;
     font-weight: bold;
     font-size: 12px;
     button{
@@ -80,4 +83,12 @@
 
 ::ng-deep .mat-tab-body-content{
     overflow: hidden !important;
+}
+
+::ng-deep .mat-tab-label{
+    min-width: 100px !important;
+}
+
+.border-class{
+    border-right: 1px solid gainsboro;
 }

@@ -5,7 +5,6 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { NgApexchartsModule } from 'ng-apexcharts';
-import {MatTabsModule} from '@angular/material/tabs';
 import { MaterialModule } from './material.module';
 import { MatNativeDateModule } from '@angular/material/core';
 import {TableModule} from 'primeng/table';

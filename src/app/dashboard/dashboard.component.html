@@ -5,6 +5,7 @@
             Overview
         </div>
         <div>
+            <img src="/assets/images/message-icon.svg" alt="" class="mr-2">
             <select class="form-select drop-down" aria-label="Default select example">
                 <option selected value="1">This month</option>
                 <option value="2">Last month</option>
@@ -15,8 +16,8 @@
   
 <div class="card m-4 ">
     <div class="col-sm-12 d-flex mt-4 mb-4">
-        <ng-container *ngFor="let item of arrCards">
-            <div  [ngClass]="item.strName == 'Pageviews' ? 'col-sm-2' : 'col-sm-2'">
+        <ng-container *ngFor="let item of arrCards; let firstItem = first; let lastItem = last;">
+            <div  class="col-sm-2" [ngClass]="{'border-class': !firstItem && !lastItem}">
                 <div class="main-name">
                     {{item.strName}}
 
@@ -32,7 +33,7 @@
                 <img src="/assets/images/red-arrow.svg" width="10px" alt="">
                 </ng-template>
 
-                <span class="ml-2 font-class" [ngStyle]="{'color': item.blnUp ? 'green':'red'}">
+                <span class="ml-2 font-class" [ngStyle]="{'color': item.blnUp ? '#00ae00':'red'}">
                     {{item.strPercentage}}
                 </span>
                 <span class="sub-class">
@@ -43,7 +44,7 @@
                 </span>
                 </div>
             </div>
-            <div *ngIf="item.strName == 'Pageviews'" class="col-sm-4" id="chart">
+            <div *ngIf="item.strName == 'Pageviews'" class="col-sm-4 border-class" id="chart" >
                 <div id="chart0">
                     <apx-chart [series]="chart0Series" [chart]="chart0Options.chart"></apx-chart>
                   </div>
@@ -65,7 +66,7 @@
             <!-- <div class="title">Title</div> -->
             <div class="content" style=" flex-grow: 1;">
               <mat-tab-group class="tabs" mat-align-tabs="end" (selectedTabChange)="onTabChange($event)">
-                    <mat-tab label="Page views"> 
+                    <mat-tab label="Pageviews"> 
                         <div id="chart1" *ngIf="intTabIndex ===0">
                             <apx-chart [series]="chart1Series" [chart]="chart1Options.chart"></apx-chart>
                           </div>
@@ -89,16 +90,6 @@
               </mat-tab-group>
             </div>
           </div>
-        <!-- <div class="d-flex justify-content-end">
-
-            <mat-tab-group>
-                <mat-tab label="Page views"> <p>Content 1</p> </mat-tab>
-                <mat-tab label="Clicks"> Content 2 </mat-tab>
-                <mat-tab label="Conversations"> Content 3 </mat-tab>
-                <mat-tab label="Comissions"> Content 3 </mat-tab>
-
-              </mat-tab-group>
-        </div> -->
     </div>
     <div class="flex-grow-1 card">
         <div class="m-2">
@@ -116,12 +107,21 @@
                         </tr>
                     </ng-template>
                     <ng-template pTemplate="body" let-service>
+                        
                         <tr class="tr-value">
-                            <td class="td-class" [ngStyle]="{'color': service.strValueStatus ==='CONNECT' ? 'gray':
-                            ( col.field==='strValue' && service.strValueStatus ==='UP'?'green':
+                            
+                            <td  class="td-class" [ngStyle]="{'color': service.strValueStatus ==='CONNECT' ? 'gray':
+                            ( col.field==='strValue' && service.strValueStatus ==='UP'?'#00ae00':
                             (col.field==='strValue' && service.strValueStatus ==='DOWN'?'red':null))}" 
                             *ngFor="let col of cols">
-                                     {{service[col.field]}}
+                            <div *ngIf="col.field==='strType'" class="d-flex align-items-center">
+                            <svg xmlns="http://www.w3.org/2000/svg" [ngStyle]="{'color': service.iconColor}" class="mr-2 icon icon-tabler icon-tabler-artboard-filled" width="24" height="24" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M15 7h-6a2 2 0 0 0 -2 2v6a2 2 0 0 0 2 2h6a2 2 0 0 0 2 -2v-6a2 2 0 0 0 -2 -2z" stroke-width="0" fill="currentColor" /><path d="M4 7a1 1 0 0 1 .117 1.993l-.117 .007h-1a1 1 0 0 1 -.117 -1.993l.117 -.007h1z" stroke-width="0" fill="currentColor" /><path d="M4 15a1 1 0 0 1 .117 1.993l-.117 .007h-1a1 1 0 0 1 -.117 -1.993l.117 -.007h1z" stroke-width="0" fill="currentColor" /><path d="M8 2a1 1 0 0 1 .993 .883l.007 .117v1a1 1 0 0 1 -1.993 .117l-.007 -.117v-1a1 1 0 0 1 1 -1z" stroke-width="0" fill="currentColor" /><path d="M16 2a1 1 0 0 1 .993 .883l.007 .117v1a1 1 0 0 1 -1.993 .117l-.007 -.117v-1a1 1 0 0 1 1 -1z" stroke-width="0" fill="currentColor" /><path d="M21 7a1 1 0 0 1 .117 1.993l-.117 .007h-1a1 1 0 0 1 -.117 -1.993l.117 -.007h1z" stroke-width="0" fill="currentColor" /><path d="M21 15a1 1 0 0 1 .117 1.993l-.117 .007h-1a1 1 0 0 1 -.117 -1.993l.117 -.007h1z" stroke-width="0" fill="currentColor" /><path d="M8 19a1 1 0 0 1 .993 .883l.007 .117v1a1 1 0 0 1 -1.993 .117l-.007 -.117v-1a1 1 0 0 1 1 -1z" stroke-width="0" fill="currentColor" /><path d="M16 19a1 1 0 0 1 .993 .883l.007 .117v1a1 1 0 0 1 -1.993 .117l-.007 -.117v-1a1 1 0 0 1 1 -1z" stroke-width="0" fill="currentColor" /></svg>
+                            {{service[col.field]}}
+                            </div>
+                            <span *ngIf="col.field !=='strType'">
+
+                                {{service[col.field]}}
+                            </span>
                                  <span *ngIf="service.strValueStatus ==='CONNECT' && col.field==='strValue'">
                                    <button class="btn btn-light" >
                                     Connect

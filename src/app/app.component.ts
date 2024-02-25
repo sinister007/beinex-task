@@ -15,12 +15,12 @@ export class AppComponent {
   ){
 
   }
+  
   title = 'angular-task';
   /**
    * key to show or hide menu
    */
   blnShowMenu:boolean = true
-  showFiller = false;
   /**
    * key to show overview menu
    */
@@ -31,9 +31,8 @@ export class AppComponent {
    * show over view menu
    */
   showOverview(){
-    debugger
     this.blnShowOverView = true
-    this.objRouter.navigate(['/dashboard'])
+    this.objRouter.navigate(['/overview'])
   }
   /**
    * show hide menu

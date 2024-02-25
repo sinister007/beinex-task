@@ -72,7 +72,7 @@ export class DashboardComponent implements OnInit {
   };
   chart1Series = [
     {
-      name: "Series 1",
+      name: "Pageviews",
       data: [30, 40, 35, 50, 49, 60, 70, 91, 125],
     }
   ];
@@ -91,7 +91,7 @@ export class DashboardComponent implements OnInit {
 
   chart2Series = [
     {
-      name: "Series 2",
+      name: "Clicks",
       data: [11, 32, 45, 32, 34, 52, 41, 55, 67],
       color:"#04ff00"
 
@@ -110,7 +110,7 @@ export class DashboardComponent implements OnInit {
 
   chart3Series = [
     {
-      name: "Series 3",
+      name: "Conversations",
       data: [20, 50, 120, 40, 70, 10, 80, 45, 20],
       color:"#ff00fc"
     }
@@ -130,7 +130,7 @@ export class DashboardComponent implements OnInit {
 
   chart4Series = [
     {
-      name: "Series 4",
+      name: "Comissions",
       data: [22, 54, 80, 10, 50, 20, 60, 7, 42],
       color:'#ff5959'
     }

@@ -14,45 +14,44 @@
     </div>
 </div>
   
-<div class="card m-4 ">
-    <div class="col-sm-12 d-flex mt-4 mb-4">
-        <ng-container *ngFor="let item of arrCards; let firstItem = first; let lastItem = last;">
-            <div  class="col-sm-2" [ngClass]="{'border-class': !firstItem && !lastItem}">
+
+<div class="card m-4">
+    <div class="row m-3">
+        <ng-container *ngFor="let item of arrCards; let firstItem = first; let lastItem = last;" class="col-sm mb-4">
+            <div class="card-body d-flex flex-column" [ngClass]="{'border-class': !firstItem && !lastItem}">
                 <div class="main-name">
                     {{item.strName}}
-
                 </div>
                 <div class="value-class">
                     {{item.intValue}}
                 </div>
                 <div>
-                <span *ngIf="item.blnUp;else blnDown">
-                <img src="/assets/images/green-arrow.svg" width="10px" alt="">
-                </span>
-                <ng-template #blnDown>
-                <img src="/assets/images/red-arrow.svg" width="10px" alt="">
-                </ng-template>
-
-                <span class="ml-2 font-class" [ngStyle]="{'color': item.blnUp ? '#00ae00':'red'}">
-                    {{item.strPercentage}}
-                </span>
-                <span class="sub-class">
-                    {{item.blnEpc?'Epc':'Ctr'}} :
-                </span>
-                <span class="sub-class">
-                    {{item.strEpcValue}}
-                </span>
+                    <span *ngIf="item.blnUp;else blnDown">
+                        <img src="/assets/images/green-arrow.svg" width="10px" alt="">
+                    </span>
+                    <ng-template #blnDown>
+                        <img src="/assets/images/red-arrow.svg" width="10px" alt="">
+                    </ng-template>
+                    <span class="ml-2 font-class" [ngStyle]="{'color': item.blnUp ? '#00ae00':'red'}">
+                        {{item.strPercentage}}
+                    </span>
+                    <span class="sub-class">
+                        {{item.blnEpc?'Epc':'Ctr'}} :
+                    </span>
+                    <span class="sub-class">
+                        {{item.strEpcValue}}
+                    </span>
                 </div>
             </div>
-            <div *ngIf="item.strName == 'Pageviews'" class="col-sm-4 border-class" id="chart" >
+            <div *ngIf="item.strName == 'Pageviews'" class="card-body border-class ml-sm-2 p-0 pt-4">
                 <div id="chart0">
                     <apx-chart [series]="chart0Series" [chart]="chart0Options.chart"></apx-chart>
-                  </div>
-
+                </div>
             </div>
         </ng-container>
     </div>
 </div>
+
 
 <div class="col-sm-12 row card-grow-class">
     <div class="col-sm-8 card d-flex">
